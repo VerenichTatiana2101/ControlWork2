@@ -82,6 +82,28 @@ def search_note(file_name):
             print('нет заметки с данным заголовком.')
     input('нажмите любую клавишу')
 
+# готово
+def delete_note(file_name):
+    os.system('CLS')
+    title = input('Введите заголовок заметки: ').title()
+    found = False
+    with open(file_name, mode='r', newline='', encoding='utf-8') as r_file:
+        reader = csv.reader(r_file, delimiter=';')
+        headers = next(reader)
+        
+        with open(file_name, mode='w', newline='', encoding='utf-8') as w_file:
+            writer = csv.writer(w_file, delimiter=';')
+            writer.writerow(headers)
+            for note in reader:
+                if title in note[1]:
+                    found = True
+                    print(f'Заметка "{note[1]}" удалена.')
+                else:
+                    writer.writerow(note)
+            if not found:
+                print('Нет заметки с таким заголовком.')
+    input('нажмите любую клавишу')
+
 # готов
 def drawing():
     print('1 - показать заметки')
@@ -105,12 +127,14 @@ def main(file_name):
         elif user_choice == 3:
             search_note(file_name)  #+
         elif user_choice == 4:
-            delete_note(file_name)
+            delete_note(file_name)  #+
         elif user_choice == 5:
             rename_note(file_name) #+ -добавить изменение заголовка
         elif user_choice == 6:
             print('До свидания!')
             return
+        
+
 
 
 main('notes.csv')
