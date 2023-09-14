@@ -73,28 +73,6 @@ def show_notes(file_name):
         input('\npress any key')
 
 # готово, добавить изменение заголовка
-# def rename_note(file_name, param):
-#     with open(file_name, mode='r', newline='', encoding='utf-8') as r_file:
-#         reader = csv.reader(r_file, delimiter=';')
-#         headers = next(reader)
-#         title = input('Введите заголовок заметки: ').title()
-#         notes = []
-#         for row in reader:
-#             if title in row[1]:
-#                 new_body = input('Введите новые данные: ').title()
-#                 if not new_body.strip():
-#                     print('поле не может быть пустым!')
-#                 else:
-#                     date = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-#                     row[param] = new_body
-#                     row[3] = date
-#                     print('Заметка успешно изменена!')
-#             notes.append(row)
-#     with open(file_name, mode='w', newline='', encoding='utf-8') as w_file:
-#         writer = csv.writer(w_file, delimiter=';')
-#         writer.writerow(headers)
-#         writer.writerows(notes)
-#     input('Нажмите любую клавишу для продолжения работы')
 def rename_note(file_name, param):
     with open(file_name, mode='r', newline='', encoding='utf-8') as r_file:
         reader = csv.reader(r_file, delimiter=';')
